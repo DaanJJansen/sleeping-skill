@@ -12,7 +12,7 @@ class Sleeping(MycroftSkill):
     @intent_file_handler('sleeping.intent')
     def handle_sleeping(self, message):
         requestUrl = self.url+"/items/oppas"
-        req = requests.post(requestUrl, data="On", headers=self.command_headers)        
+        req = requests.post(requestUrl, data="ON", headers=self.command_headers)        
         self.speak_dialog('sleeping')
 
 
