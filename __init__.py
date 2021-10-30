@@ -11,14 +11,14 @@ class Sleeping(MycroftSkill):
 
     @intent_handler('sleeping.intent')
     def handle_sleeping(self, message):
-        requestUrl = self.url+"/items/oppas"
+        requestUrl = self.url+"/items/sleeping"
         req = requests.post(requestUrl, data="ON", headers=self.command_headers)        
         self.speak_dialog('sleeping')
         
     @intent_handler('door.intent')
     def handle_door(self, message):
-        requestUrl = self.url+"/items/oppas"
-        req = requests.post(requestUrl, data="OFF", headers=self.command_headers)        
+        requestUrl = self.url+"/items/door_lock"
+        req = requests.post(requestUrl, data="ON", headers=self.command_headers)        
         self.speak_dialog('door')
         
         
