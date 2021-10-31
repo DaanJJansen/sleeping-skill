@@ -27,7 +27,7 @@ class Sleeping(MycroftSkill):
         volume = message.data.get('volume')
         #requestUrl = self.url+"/items/door_lock"
         #req = requests.post(requestUrl, data="ON", headers=self.command_headers)        
-        self.speak_dialog('door', data={
+        self.speak_dialog('speakervolume', data={
             'volume': volume
         })
 
