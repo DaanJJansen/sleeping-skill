@@ -28,7 +28,7 @@ class Sleeping(MycroftSkill):
         utterance = message.data.get('utterance')
         volume = int(extract_number(utterance))
         
-        if volume.isnumeric() and 0 <= volume <= 30:
+        if 1 <= volume <= 30:
             requestUrl = self.url+"/items/OnkyoVolume"
             req = requests.post(requestUrl, data="volume", headers=self.command_headers)        
             self.speak_dialog('speakervolume', data={
