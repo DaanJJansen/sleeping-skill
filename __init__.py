@@ -25,11 +25,17 @@ class Sleeping(MycroftSkill):
     @intent_handler('speakervolume.intent')
     def handle_door(self, message):
         volume = message.data.get('volume')
-        #requestUrl = self.url+"/items/door_lock"
-        #req = requests.post(requestUrl, data="ON", headers=self.command_headers)        
-        self.speak_dialog('speakervolume', data={
-            'volume': volume
-        })
+        
+        if volume.isnumeric() and 0 <= number <= 30:
+            requestUrl = self.url+"/items/OnkyoVolume"
+            req = requests.post(requestUrl, data="volume", headers=self.command_headers)        
+            self.speak_dialog('speakervolume', data={
+                'volume': volume
+            })
+        else:
+            self.speak_dialog('speakervolume.err.dialog', data={
+                'volume': volume
+            })
 
 def create_skill():
     return Sleeping()
