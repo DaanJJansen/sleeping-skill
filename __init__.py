@@ -1,4 +1,5 @@
 from mycroft import MycroftSkill, intent_handler
+from mycroft.util.parse import extract_number
 
 import requests
 
@@ -24,16 +25,17 @@ class Sleeping(MycroftSkill):
         
     @intent_handler('speakervolume.intent')
     def handle_door(self, message):
-        volume = message.data.get('volume')
+    	utterance = message.data.get('utterance')
+    	volume = int(extract_number(utterance))
         
-        if volume.isnumeric() and 0 <= int(volume) <= 30:
+        if volume.isnumeric() and 0 <= volume <= 30:
             requestUrl = self.url+"/items/OnkyoVolume"
             req = requests.post(requestUrl, data="volume", headers=self.command_headers)        
             self.speak_dialog('speakervolume', data={
                 'volume': volume
             })
         else:
-            self.speak_dialog('speakervolume.err.dialog', data={
+            self.speak_dialog('speakervolume.err', data={
                 'volume': volume
             })
 

@@ -1,2 +1,4 @@
 speaker volume to {volume}
 speakervolume to {volume}
+set speaker volume to {volume}
+set speakervolume to {volume}
