@@ -26,7 +26,7 @@ class Sleeping(MycroftSkill):
     def handle_door(self, message):
         volume = message.data.get('volume')
         
-        if volume.isnumeric() and 0 <= number <= 30:
+        if volume.isnumeric() and 0 <= int(volume) <= 30:
             requestUrl = self.url+"/items/OnkyoVolume"
             req = requests.post(requestUrl, data="volume", headers=self.command_headers)        
             self.speak_dialog('speakervolume', data={
