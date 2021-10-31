@@ -30,7 +30,7 @@ class Sleeping(MycroftSkill):
         
         if 1 <= volume <= 30:
             requestUrl = self.url+"/items/OnkyoVolume"
-            req = requests.post(requestUrl, data=volume, headers=self.command_headers)        
+            req = requests.post(requestUrl, data=str(volume), headers=self.command_headers)        
             self.speak_dialog('speakervolume', data={
                 'volume': volume
             })
