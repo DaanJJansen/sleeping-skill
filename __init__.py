@@ -24,7 +24,7 @@ class Sleeping(MycroftSkill):
         
         
     @intent_handler('speakervolume.intent')
-    def handle_door(self, message):
+    def handle_speakervolume(self, message):
         utterance = message.data.get('utterance')
         volume = int(extract_number(utterance))
         
